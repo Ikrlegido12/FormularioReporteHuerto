@@ -83,7 +83,7 @@
   <div class="modal-content">
     <button class="close-modal" id="close-modal" title="Cerrar">&times;</button>
     <p>2025 (C) I.E.S. BAHÍA DE ALGECIRAS</p>
-    <img src="bancales.webp" alt="Bancales" class="modal-img" alt="Ubicación de los bancales">
+    <div id="modal-img-container"></div>
   </div>
 </div>
 
@@ -364,37 +364,39 @@
     const closeModal = document.getElementById('close-modal');
     const modalImgContainer = document.getElementById('modal-img-container');
 
-    infoLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      // Solo añade la imagen si no está ya
-      if (!modalImgContainer.querySelector('img')) {
-        const img = document.createElement('img');
-        img.src = 'bancales.webp';
-        img.alt = 'Bancales';
-        img.className = 'modal-img';
-        img.loading = 'lazy';
-        modalImgContainer.appendChild(img);
-      }
-      modal.classList.add('active');
-    });
+    if (infoLink && modal && closeModal && modalImgContainer) {
+      infoLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Solo añade la imagen si no está ya
+        if (!modalImgContainer.querySelector('img')) {
+          const img = document.createElement('img');
+          img.src = 'bancales.webp';
+          img.alt = 'Bancales';
+          img.className = 'modal-img';
+          img.loading = 'lazy';
+          modalImgContainer.appendChild(img);
+        }
+        modal.classList.add('active');
+      });
 
-    closeModal.addEventListener('click', function() {
-      modal.classList.remove('active');
-    });
-
-    // Cerrar modal al hacer click fuera del contenido
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) {
+      closeModal.addEventListener('click', function() {
         modal.classList.remove('active');
-      }
-    });
+      });
 
-    // Cerrar con Escape
-    document.addEventListener('keydown', function(e) {
-      if (e.key === "Escape") {
-        modal.classList.remove('active');
-      }
-    });
+      // Cerrar modal al hacer click fuera del contenido
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+        }
+      });
+
+      // Cerrar con Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape") {
+          modal.classList.remove('active');
+        }
+      });
+    }
   });
 </script>
 </body>
