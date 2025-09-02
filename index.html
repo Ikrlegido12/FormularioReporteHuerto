@@ -1,0 +1,209 @@
+<h1>EL HUERTILLO - FORMULARIO DE MANTENIMIENTO</h1>
+
+<p class="advertencia">Cualquier broma quedará registrada y con posible sanción</p>
+<p class="propiedad"> COMITÉ AMBIENTAL - IES BAHÍA DE ALGECIRAS</p>
+<div class="form-box">
+<form action="https://formspree.io/f/xovnnknl" method="POST">
+  <label>
+    Correo g.educaand.es:
+    <input type="email" name="email" autocomplete="off" value="usuarioIDEA@g.educaand.es" required>
+  </label>
+
+  <label>
+    Fecha del mantenimiento:
+    <input type="date" name="date" required>
+  </label>
+
+  <label>
+    Encargado(s) del huerto:
+    <input type="text" name="encargados" required>
+  </label>
+
+  <label>
+    Tipo de mantenimiento:
+    <div class="tipo-mantenimiento">
+      <label><input type="checkbox" name="maintenance_type[]" value="riego"> Bancales</label>
+      <label><input type="checkbox" name="maintenance_type[]" value="fertilizacion"> Jardin Botánico</label>
+      <label><input type="checkbox" name="maintenance_type[]" value="poda"> Frutales</label>
+      <label><input type="checkbox" name="maintenance_type[]" value="control_plagas"> Cultivos en tierra</label>
+      <label><input type="checkbox" name="maintenance_type[]" value="otros"> Otros</label>
+    </div>
+  </label>
+
+  <label>
+    Descripción del mantenimiento realizado:
+    <textarea name="mantenimiento" required></textarea>
+  </label>
+
+  <label>
+    Cosas/Objetivos a realizar en el próximo mantenimiento:
+    <textarea name="objetivos" required></textarea>
+  </label>
+
+  <button class="submit" type="submit">ENVIAR REPORTE</button>
+</form>
+<p id="advertencia-error" class="advertencia" style="display:none;">ERROR: Cambia el correo</p>
+</div>
+<style>
+  body {
+    background: linear-gradient(120deg, #e0ffe0 0%, #b2f0c0 100%);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    text-align: center;
+    color: #357a38;
+    margin-top: 32px;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+    font-size: 2rem;
+  }
+
+  .advertencia {
+    color: #d32f2f;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .propiedad {
+    text-align: center;
+    color: #03f;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+
+  .form-box {
+    max-width: 480px;
+    margin: 32px auto 0 auto;
+    padding: 32px 36px 24px 36px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(44, 62, 80, 0.12);
+    border: 2px solid #4caf50;
+  }
+
+  form label {
+    display: block;
+    margin-bottom: 18px;
+    color: #357a38;
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: 0.2px;
+  }
+
+  input[type="email"],
+  input[type="date"],
+  input[type="text"],
+  textarea {
+    display: block;
+    width: 100%;
+    margin-top: 7px;
+    padding: 9px 12px;
+    border: 1.5px solid #b2dfdb;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #f7faf7;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+  }
+
+  input[type="email"]:focus,
+  input[type="date"]:focus,
+  input[type="text"]:focus,
+  textarea:focus {
+    border-color: #4caf50;
+    outline: none;
+    background: #e8f5e9;
+  }
+
+  label textarea {
+    min-height: 70px;
+    resize: vertical;
+  }
+
+  .tipo-mantenimiento {
+    margin-top: 7px;
+    margin-bottom: 0;
+    padding: 10px 12px;
+    background: #f1f8e9;
+    border-radius: 7px;
+    border: 1px solid #c8e6c9;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tipo-mantenimiento label {
+    color: #2e7d32;
+    font-weight: 400;
+    font-size: 0.98rem;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .submit {
+    background-color: #43a047;
+    color: white;
+    font-weight: bold;
+    padding: 12px 0;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.08rem;
+    margin-top: 10px;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.08);
+    transition: background 0.2s;
+  }
+
+  .submit:hover {
+    background-color: #388e3c;
+  }
+
+  #advertencia-error {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 1.08rem;
+    display: none;
+  }
+</style>
+<script>
+  // Selecciona el input de fecha y le pone el valor de hoy
+  document.addEventListener('DOMContentLoaded', function() {
+    const inputFecha = document.querySelector('input[type="date"][name="date"]');
+    if (inputFecha) {
+      const hoy = new Date();
+      const yyyy = hoy.getFullYear();
+      const mm = String(hoy.getMonth() + 1).padStart(2, '0');
+      const dd = String(hoy.getDate()).padStart(2, '0');
+      inputFecha.value = `${yyyy}-${mm}-${dd}`;
+    }
+
+    // Bloquear envío si el correo es uno específico
+    const form = document.querySelector('form');
+    const inputCorreo = document.querySelector('input[type="email"][name="email"]');
+    const correoBloqueado = "usuarioIDEA@g.educaand.es"; // Cambia este por el correo a bloquear
+    const advertenciaError = document.getElementById('advertencia-error');
+
+    form.addEventListener('submit', function(e) {
+      if (inputCorreo.value.trim().toLowerCase() === correoBloqueado.toLowerCase()) {
+        e.preventDefault();
+        inputCorreo.focus();
+        if (advertenciaError) {
+          advertenciaError.style.display = 'block';
+        }
+      }
+    });
+
+    // Oculta el mensaje de error si el usuario cambia el correo
+    inputCorreo.addEventListener('input', function() {
+      if (advertenciaError) {
+        advertenciaError.style.display = 'none';
+      }
+    });
+  });
+</script>
