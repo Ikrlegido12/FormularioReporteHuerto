@@ -1,3 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulario de Mantenimiento - El Huertillo</title>
+  <link rel="icon" type="image/jpg" href="logo_eco.jpg" />
+  <meta name="description" content="Formulario de mantenimiento del huerto escolar El Huertillo del IES Bahía de Algeciras." />
+  <meta name="author" content="IES Bahía de Algeciras" />
+  <meta name="keywords" content="huerto escolar, mantenimiento, formulario, IES Bahía de Algeciras, ecoescuelas, sostenibilidad, educación ambiental" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta property="og:title" content="Formulario de Mantenimiento - El Huertillo" />
+  <meta property="og:description" content="Formulario de mantenimiento del huerto escolar El Huertillo del IES Bahía de Algeciras." />
+  <meta property="og:image" content="logo_eco.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_ES" />
+</head>
+<body>
 <h1>EL HUERTILLO - FORMULARIO DE MANTENIMIENTO</h1>
 
 <p class="advertencia">Cualquier broma quedará registrada y con posible sanción</p>
@@ -48,22 +66,55 @@
   <p class="advertencia">* obligatorio.</p>
 
   <button class="submit" type="submit">ENVIAR REPORTE</button>
+  <a href="#" id="info-link" class="info-link">ℹ️ + info</a>
 </form>
 <p id="advertencia-error" class="advertencia" style="display:none;">ERROR: Cambia el correo</p>
 </div>
-<div class="logo-esquina">
-  <img src="logo.png" alt="Logo Huertillo" />
+<div class="logo-esquina-bahia">
+  <a href="https://iesbahia.es/" target="_blank"><img src="logo.png" alt="Logo Huertillo" /></a>
+  <a href="https://www.juntadeandalucia.es/educacion/portals/web/aldea/proyectos/ecoescuela/el-proyecto" target="_blank"><img src="logo_eco.jpg" alt="Logo EcoEscuelas" /></a>
 </div>
+<div class="logo-esquina-junta">
+  <a href="https://www.juntadeandalucia.es/educacion/portales/web/educacion/" target="_blank"><img src="logo_junta.png" alt="Logo Junta de Andalucia" /></a>
+</div>
+
+<!-- Modal -->
+<div id="modal-info" class="modal-info">
+  <div class="modal-content">
+    <button class="close-modal" id="close-modal" title="Cerrar">&times;</button>
+    <p>2025 (C) I.E.S. BAHÍA DE ALGECIRAS</p>
+    <img src="bancales.png" alt="Bancales" class="modal-img" alt="Ubicación de los bancales">
+  </div>
+</div>
+
 <style>
-  .logo-esquina {
+  .logo-esquina-bahia {
     position: fixed;
     left: 14px;
     bottom: 14px;
     z-index: 100;
     opacity: 0.85;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1px;
   }
-  .logo-esquina img {
-    height: 38px;
+  .logo-esquina-bahia img {
+    height: 48px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(44,62,80,0.10));
+  }
+
+  .logo-esquina-junta {
+    position: fixed;
+    right: 14px;
+    bottom: 14px;
+    z-index: 100;
+    opacity: 0.85;
+  }
+  .logo-esquina-junta img {
+    height: 48px;
     width: auto;
     display: block;
     filter: drop-shadow(0 2px 4px rgba(44,62,80,0.10));
@@ -194,6 +245,83 @@
     font-size: 1.08rem;
     display: none;
   }
+
+  .info-link {
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+    color: #357a38;
+    font-size: 0.98rem;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .info-link:hover {
+    color: #d32f2f;
+  }
+
+  .modal-info {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    background: rgba(44,62,80,0.25);
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-info.active {
+    display: flex;
+  }
+  .modal-content {
+    position: relative;
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 24px 24px 24px;
+    box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+    max-width: 420px;
+    width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .close-modal {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: #d32f2f;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .close-modal:hover {
+    background: #b71c1c;
+  }
+  .modal-img {
+    max-width: 100%;
+    max-height: 60vh;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(44,62,80,0.10);
+    margin-top: 16px;
+  }
+
+  @media (max-width: 950px) {
+  .logo-esquina-bahia,
+  .logo-esquina-junta {
+    display: none;
+  }
+}
 </style>
 <script>
   // Selecciona el input de fecha y le pone el valor de hoy
@@ -229,5 +357,35 @@
         advertenciaError.style.display = 'none';
       }
     });
+
+    // Modal
+    const infoLink = document.getElementById('info-link');
+    const modal = document.getElementById('modal-info');
+    const closeModal = document.getElementById('close-modal');
+
+    infoLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      modal.classList.add('active');
+    });
+
+    closeModal.addEventListener('click', function() {
+      modal.classList.remove('active');
+    });
+
+    // Cerrar modal al hacer click fuera del contenido
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+
+    // Cerrar con Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === "Escape") {
+        modal.classList.remove('active');
+      }
+    });
   });
 </script>
+</body>
+</html>
