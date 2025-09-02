@@ -5,40 +5,47 @@
 <div class="form-box">
 <form action="https://formspree.io/f/xovnnknl" method="POST">
   <label>
-    Correo g.educaand.es:
+    Correo g.educaand.es:*
     <input type="email" name="email" autocomplete="off" value="usuarioIDEA@g.educaand.es" required>
   </label>
 
   <label>
-    Fecha del mantenimiento:
+    Fecha del mantenimiento:*
     <input type="date" name="date" required>
   </label>
 
   <label>
-    Encargado(s) del huerto:
+    Encargado(s) del huerto:*
     <input type="text" name="encargados" required>
   </label>
 
   <label>
     Tipo de mantenimiento:
     <div class="tipo-mantenimiento">
-      <label><input type="checkbox" name="maintenance_type[]" value="riego"> Bancales</label>
-      <label><input type="checkbox" name="maintenance_type[]" value="fertilizacion"> Jardin Botánico</label>
-      <label><input type="checkbox" name="maintenance_type[]" value="poda"> Frutales</label>
-      <label><input type="checkbox" name="maintenance_type[]" value="control_plagas"> Cultivos en tierra</label>
+      <label><input type="checkbox" name="maintenance_type[]" value="bancales"> Bancales</label>
+      <label><input type="checkbox" name="maintenance_type[]" value="jardin-botanico"> Jardin Botánico</label>
+      <label><input type="checkbox" name="maintenance_type[]" value="frutales"> Frutales</label>
+      <label><input type="checkbox" name="maintenance_type[]" value="bancales-verticales"> Bancales verticales</label>
+      <label><input type="checkbox" name="maintenance_type[]" value="cultivos-tierra"> Cultivos en tierra</label>
       <label><input type="checkbox" name="maintenance_type[]" value="otros"> Otros</label>
     </div>
   </label>
 
   <label>
-    Descripción del mantenimiento realizado:
+    Descripción del mantenimiento realizado:*
     <textarea name="mantenimiento" required></textarea>
   </label>
 
   <label>
-    Cosas/Objetivos a realizar en el próximo mantenimiento:
+    Cosas/Objetivos a realizar en el próximo mantenimiento:*
     <textarea name="objetivos" required></textarea>
   </label>
+
+  <label>
+    Otros datos de interés:
+    <textarea name="datos-extra"></textarea>
+  </label>
+  <p class="advertencia">* obligatorio.</p>
 
   <button class="submit" type="submit">ENVIAR REPORTE</button>
 </form>
