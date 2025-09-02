@@ -51,7 +51,24 @@
 </form>
 <p id="advertencia-error" class="advertencia" style="display:none;">ERROR: Cambia el correo</p>
 </div>
+<div class="logo-esquina">
+  <img src="logo.png" alt="Logo Huertillo" />
+</div>
 <style>
+  .logo-esquina {
+    position: fixed;
+    left: 14px;
+    bottom: 14px;
+    z-index: 100;
+    opacity: 0.85;
+  }
+  .logo-esquina img {
+    height: 38px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(44,62,80,0.10));
+  }
+
   body {
     background: linear-gradient(120deg, #e0ffe0 0%, #b2f0c0 100%);
     font-family: 'Segoe UI', Arial, sans-serif;
